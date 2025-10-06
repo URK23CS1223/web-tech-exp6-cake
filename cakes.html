@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Cake Shop</title>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f9f9f9;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+    }
+    h1 {
+        background-color: #b30000;
+        color: white;
+        padding: 15px;
+        margin: 0;
+    }
+    .cake-container {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin: 20px;
+    }
+    .cake {
+        background-color: white;
+        border-radius: 10px;
+        padding: 10px;
+        width: 180px;
+        box-shadow: 0 0 8px rgba(0,0,0,0.2);
+    }
+    .cake img {
+        width: 100%;
+        border-radius: 10px;
+    }
+    .order-box {
+        background-color: white;
+        width: 400px;
+        margin: 30px auto;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+    input {
+        width: 80%;
+        padding: 8px;
+        margin: 8px 0;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+    button {
+        background-color: #007bff;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+    button:hover {
+        background-color: #0056b3;
+    }
+    #message {
+        margin-top: 15px;
+        color: green;
+        font-weight: bold;
+    }
+    #total {
+        margin-top: 10px;
+        background-color: green;
+        color: white;
+        font-weight: bold;
+        padding: 10px;
+        border-radius: 8px;
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+</style>
+</head>
+<body>
+
+<h1>CAKE SHOP</h1>
+
+<div class="cake-container">
+    <div class="cake">
+       <img src="https://toujours.co.in/cdn/shop/products/Chocolate-Oreo-Cake.jpg?v=1679651489" alt="Oreo Cake">
+        <p>Rainbow Cake – Rs. 300</p>
+    </div>
+    <div class="cake">
+       <img src="https://w0.peakpx.com/wallpaper/922/674/HD-wallpaper-chocolate-cake-cake-food-chocolate-black-sweet-dessert.jpg" alt="Chocolate Cake">
+        <p>Chocolate Cake – Rs. 200</p>
+    </div>
+    <div class="cake">
+        <img src="https://cakebee.in/cdn/shop/files/cropped-white-PRZ09034copy_1_a1da5eac-5228-4274-941e-109c738b2c21.jpg?v=1707488346" alt="Red Velvet Cake">
+        <p>Red Velvet Cake – Rs. 250</p>
+    </div>
+    <div class="cake">
+       <img src="https://livforcake.com/wp-content/uploads/2017/07/black-forest-cake-thumb-500x500.jpg" alt="Black Forest Cake">
+        <p>Black Forest Cake – Rs. 350</p>
+    </div>
+</div>
+<div class="order-box">
+    <h2>Order Cake</h2>
+    <label>Rainbow Cake (Quantity)</label><br>
+    <input type="number" id="rainbow" placeholder="0"><br>
+    <label>Chocolate Cake (Quantity)</label><br>
+    <input type="number" id="choco" placeholder="0"><br>
+    <label>Red Velvet Cake (Quantity)</label><br>
+    <input type="number" id="velvet" placeholder="0"><br>
+    <label>Black Forest Cake (Quantity)</label><br>
+    <input type="number" id="black" placeholder="0"><br>
+    <button id="orderBtn">Place Order</button>
+    <div id="message"></div>
+    <div id="total"></div>
+</div>
+<script>
+$(document).ready(function(){
+    $("#orderBtn").click(function(){
+        let r = parseInt($("#rainbow").val()) || 0;
+        let c = parseInt($("#choco").val()) || 0;
+        let v = parseInt($("#velvet").val()) || 0;
+        let b = parseInt($("#black").val()) || 0;
+        let pr = 300, pc = 200, pv = 250, pb = 350;
+        let total = (r*pr) + (c*pc) + (v*pv) + (b*pb);
+        if(total === 0){
+            alert("Please enter at least one cake quantity!");
+            $("#message").html("");
+            $("#total").html("");
+        } else {
+            $("#message").html("Purchase Order Bill!!!");
+            $("#total").html("Total Price: Rs. " + total);
+        }
+    });
+    $("input").keyup(function(){
+        $("#message").html("");
+        $("#total").html("");
+    });
+});
+</script>
+ <footer>
+    <h2>Contact Us</h2>
+    <p><strong>Name:</strong> SHAWN</p>
+    <p><strong>Phone:</strong> 8610172538</p>
+    <p><strong>Email:</strong> whiskwonder@gmail.com</p>
+    <p><strong>Location:</strong> Coimbatore, Tamil Nadu, India</p>
+  </footer>
+</body>
+</html>
